@@ -1,6 +1,7 @@
 class AppString {
   static const noRouteFound = "noRouteFound";
   static const todoApp = 'Todo App';
+  static const todoAppTitleCaptilaze = 'TODO APP';
   // error handler
   static const String badRequestError = "bad_request_error";
   static const String noContent = "no_content";

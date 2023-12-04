@@ -6,7 +6,7 @@ import '../repositories/todo_repository.dart';
 
 class EditTodoUseCase implements BaseUseCase<Todo, Params<Todo>> {
   final TodoRepository repository;
-  EditTodoUseCase(this.repository);
+  EditTodoUseCase({required this.repository});
 
   @override
   Future<Either<Failure, Todo>> call(Params<Todo> params) async {

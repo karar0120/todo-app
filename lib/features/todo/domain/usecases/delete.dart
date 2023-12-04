@@ -6,7 +6,7 @@ import '../repositories/todo_repository.dart';
 
 class DeleteTodoUseCase implements BaseUseCase<Todo, Params<Todo>> {
   final TodoRepository repository;
-  DeleteTodoUseCase(this.repository);
+  DeleteTodoUseCase({required this.repository});
 
   @override
   Future<Either<Failure, Todo>> call(Params<Todo> params) async {

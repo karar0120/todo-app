@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../utils/values_manger.dart';
 import 'color.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(
-      primaryColor: ColorsManager.mainBlue,
-      scaffoldBackgroundColor: Colors.white
+      primaryColor: ColorsManager.mainPurple,
+      scaffoldBackgroundColor: ColorsManager.lightPurple,
 
       /// Main Color Theme
       //primaryColorLight: ColorManger.lightGray,
@@ -19,15 +21,13 @@ ThemeData getAppTheme() {
       //   elevation: AppSize.s4,
       // ),
 
-      /// app bar theme
-      // appBarTheme: AppBarTheme(
-      //   shadowColor: ColorManger.lightPrimary,
-      //     color: ColorManger.primary,
-      //     centerTitle: true,
-      //     elevation: AppSize.s4,
-      //     titleTextStyle: getRegularStyle(
-      //         color: ColorManger.white,
-      //         fontSize: FontSizeManger.s16)),
+      // app bar theme
+      appBarTheme: const AppBarTheme(
+        shadowColor: ColorsManager.lightGray,
+        color: ColorsManager.mainPurple,
+        centerTitle: true,
+        elevation: AppSize.s4,
+      ),
 
       // / button theme
       // buttonTheme: const ButtonThemeData(
@@ -106,5 +106,7 @@ ThemeData getAppTheme() {
       //           ),
       //           borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)))),
       // );
-      );
+
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: ColorsManager.mainPurple));
 }
