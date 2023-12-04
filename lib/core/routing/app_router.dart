@@ -7,6 +7,7 @@ import 'package:todo_app/features/todo/domain/usecases/add.dart';
 import 'package:todo_app/features/todo/presentation/controller/todo_add/todo_add_cubit.dart';
 import 'package:todo_app/features/todo/presentation/pages/todo_add/todo_add_screen.dart';
 
+import '../../features/todo/presentation/pages/todo_edit/todo_edit_screen.dart';
 import '../../features/todo/presentation/pages/todo_item/todo_item_screen.dart';
 import '../utils/strings_manger.dart';
 
@@ -24,6 +25,16 @@ class AppRoute {
                   child: BlocProvider<AppCalendarCubit>(
                     create: (context) => AppCalendarCubit(),
                     child: const TodoAddScreen(),
+                  ),
+                ));
+
+      case Routes.todoUpdate:
+        initTodoEditModule();
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider<AppCalendarCubit>(
+                  create: (context) => AppCalendarCubit(),
+                  child: TodoEditScreen(
+                    id: settings.arguments as int,
                   ),
                 ));
 

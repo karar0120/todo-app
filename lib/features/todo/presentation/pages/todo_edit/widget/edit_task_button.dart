@@ -3,35 +3,38 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/helper/extensions.dart';
 import 'package:todo_app/core/utils/strings_manger.dart';
+import 'package:todo_app/core/widget/cubit/app_calendar_cubit.dart';
+
 import '../../../../../../core/theming/styles.dart';
 import '../../../../../../core/utils/values_manger.dart';
 import '../../../../../../core/widget/app_text_button.dart';
-import '../../../controller/todo_add/todo_add_cubit.dart';
+import '../../../controller/todo_edit/todo_edit_cubit.dart';
 import '../../../controller/todo_item/todo_item_cubit.dart';
 
-class AddTaskButton extends StatelessWidget {
-  const AddTaskButton({super.key});
+class EditTaskButton extends StatelessWidget {
+  final int id;
+  const EditTaskButton({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TodoAddCubit, TodoAddState>(
+    return BlocBuilder<TodoEditCubit, TodoEditState>(
       builder: (context, state) {
-        if (state is TodoAddError) {
+        if (state is TodoEditError) {
           return Text(state.error);
-        } else if (state is TodoAddLoading) {
+        } else if (state is TodoEditLoading) {
           return const Center(child: CircularProgressIndicator());
         } else {
-          if (state is TodoAddLoaded) {
+          if (state is TodoEditLoaded) {
             context.read<TodoItemCubit>().getTodoItem();
           }
           return Padding(
             padding: const EdgeInsets.all(AppPadding.p12),
             child: AppTextButton(
               buttonHeight: AppSize.s70.h,
-              buttonText: AppString.add,
+              buttonText: AppString.update,
               textStyle: TextStyles.font16WhiteSemiBold,
               onPressed: () {
-                validateThenAddTask(context);
+                validateThenUpdateTask(context);
               },
             ),
           );
@@ -40,9 +43,12 @@ class AddTaskButton extends StatelessWidget {
     );
   }
 
-  void validateThenAddTask(BuildContext context) {
-    if (context.read<TodoAddCubit>().formKey.currentState!.validate()) {
-      context.read<TodoAddCubit>().addTodoItem();
+  void validateThenUpdateTask(BuildContext context) {
+    if (context.read<TodoEditCubit>().formKey.currentState!.validate()) {
+      context.read<TodoEditCubit>().editTodoItem(
+          id: id,
+          dataTime:
+              context.read<AppCalendarCubit>().selectedDateController.text);
       context.pop();
     }
   }

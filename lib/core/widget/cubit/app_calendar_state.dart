@@ -10,3 +10,5 @@ abstract class AppCalendarState extends Equatable {
 class AppCalendarInitial extends AppCalendarState {}
 
 class AppCalendarSelecetedDate extends AppCalendarState {}
+
+class InitialSelecetedDate extends AppCalendarState {}

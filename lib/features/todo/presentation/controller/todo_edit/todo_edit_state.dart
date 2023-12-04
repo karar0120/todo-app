@@ -21,3 +21,5 @@ class TodoEditError extends TodoEditState {
         error,
       ];
 }
+
+class TodoEditGetData extends TodoEditState {}

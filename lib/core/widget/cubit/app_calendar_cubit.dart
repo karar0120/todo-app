@@ -8,7 +8,7 @@ class AppCalendarCubit extends Cubit<AppCalendarState> {
 
   DateTime selectedDate = DateTime.now();
   final TextEditingController selectedDateController = TextEditingController();
-  Future<void> selectDate(BuildContext context) async {
+  Future<String?> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
@@ -19,5 +19,6 @@ class AppCalendarCubit extends Cubit<AppCalendarState> {
       selectedDateController.text = selectedDate.toString();
       emit(AppCalendarSelecetedDate());
     }
+    return selectedDateController.text;
   }
 }

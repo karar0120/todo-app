@@ -14,14 +14,15 @@ class TodoAddCubit extends Cubit<TodoAddState> {
   var formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController dataTimeController = TextEditingController();
 
-  Future<void> addTodoItem({required String dataTime}) async {
+  Future<void> addTodoItem() async {
     emit(TodoAddLoading());
     final results = await addTodoUseCase(Params(Todo(
         id: 1,
         title: titleController.text,
         description: descriptionController.text,
-        dataTime: dataTime)));
+        dataTime: dataTimeController.text)));
     results.fold((failure) => emit(TodoAddError(error: failure.message)),
         (data) => emit(TodoAddLoaded()));
   }

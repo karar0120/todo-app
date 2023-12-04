@@ -3,6 +3,7 @@ class AppString {
   static const todoApp = 'Todo App';
   static const todoAppTitleCaptilaze = 'TODO APP';
   static const addTask = 'Add Task';
+  static const editTask = 'Edit Task';
   static const title = 'Title';
   static const description = 'Description';
   static const dateTime = 'Date';
@@ -10,6 +11,7 @@ class AppString {
   static const add = 'Add';
   static const edit = 'Edit';
   static const delete = 'Delete';
+  static const update = 'Update';
 
   // error handler
   static const String badRequestError = "bad_request_error";
