@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/core/widget/cubit/app_calendar_cubit.dart';
+import 'package:todo_app/features/todo/domain/usecases/delete.dart';
 import 'package:todo_app/features/todo/domain/usecases/list.dart';
+import 'package:todo_app/features/todo/presentation/controller/todo_delete/todo_delete_cubit.dart';
 import 'package:todo_app/features/todo/presentation/controller/todo_item/todo_item_cubit.dart';
 import 'package:todo_app/todo_app.dart';
 
@@ -17,6 +18,8 @@ void main() async {
           TodoItemCubit(listTodoUseCase: getIt<ListTodoUseCase>())
             ..getTodoItem(),
     ),
-    BlocProvider<AppCalendarCubit>(create: (context) => AppCalendarCubit())
+    BlocProvider<TodoDeleteCubit>(
+        create: (context) =>
+            TodoDeleteCubit(deleteTodoUseCase: getIt<DeleteTodoUseCase>()))
   ], child: const TodoApp()));
 }

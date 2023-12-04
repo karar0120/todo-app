@@ -17,10 +17,10 @@ class TodoDeleteCubit extends Cubit<TodoDeleteState> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController dataTimeController = TextEditingController();
 
-  Future<void> deleteTodoItem() async {
+  Future<void> deleteTodoItem({required int id}) async {
     emit(TodoDeleteLoading());
     final results = await deleteTodoUseCase(Params(Todo(
-        id: 1,
+        id: id,
         title: titleController.text,
         description: descriptionController.text,
         dataTime: dataTimeController.text)));

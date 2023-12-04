@@ -8,6 +8,9 @@ class AppString {
   static const dateTime = 'Date';
   static const time = 'Time';
   static const add = 'Add';
+  static const edit = 'Edit';
+  static const delete = 'Delete';
+
   // error handler
   static const String badRequestError = "bad_request_error";
   static const String noContent = "no_content";

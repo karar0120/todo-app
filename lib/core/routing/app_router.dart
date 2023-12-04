@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/di/dependency_injection.dart';
 import 'package:todo_app/core/routing/routes.dart';
+import 'package:todo_app/core/widget/cubit/app_calendar_cubit.dart';
 import 'package:todo_app/features/todo/domain/usecases/add.dart';
 import 'package:todo_app/features/todo/presentation/controller/todo_add/todo_add_cubit.dart';
 import 'package:todo_app/features/todo/presentation/pages/todo_add/todo_add_screen.dart';
@@ -20,7 +21,10 @@ class AppRoute {
             builder: (context) => BlocProvider(
                   create: (context) =>
                       TodoAddCubit(addTodoUseCase: getIt<AddTodoUseCase>()),
-                  child: const TodoAddScreen(),
+                  child: BlocProvider<AppCalendarCubit>(
+                    create: (context) => AppCalendarCubit(),
+                    child: const TodoAddScreen(),
+                  ),
                 ));
 
       default:
