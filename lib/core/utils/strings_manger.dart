@@ -2,6 +2,12 @@ class AppString {
   static const noRouteFound = "noRouteFound";
   static const todoApp = 'Todo App';
   static const todoAppTitleCaptilaze = 'TODO APP';
+  static const addTask = 'Add Task';
+  static const title = 'Title';
+  static const description = 'Description';
+  static const dateTime = 'Date';
+  static const time = 'Time';
+  static const add = 'Add';
   // error handler
   static const String badRequestError = "bad_request_error";
   static const String noContent = "no_content";
