@@ -17,7 +17,7 @@ class TodoApp extends StatelessWidget {
         title: AppString.todoApp,
         debugShowCheckedModeBanner: false,
         theme: getAppTheme(),
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute: Routes.home,
         onGenerateRoute: AppRoute.generateRoute,
       ),
     );

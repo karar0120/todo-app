@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/routing/routes.dart';
+
+import '../../features/todo/presentation/pages/home.dart';
+import '../utils/strings_manger.dart';
 
 class AppRoute {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.loginScreen:
-      //   return MaterialPageRoute(builder: (context) => const LoginScreen());
+      case Routes.home:
+        return MaterialPageRoute(builder: (context) => HomeScreen());
 
       default:
         return unDefinedRoute();
@@ -15,9 +19,9 @@ class AppRoute {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
-                title: const Text("No Route Found"),
+                title: const Text(AppString.noRouteFound),
               ),
-              body: const Center(child: Text("No Route Found")),
+              body: const Center(child: Text(AppString.noRouteFound)),
             ));
   }
 }
