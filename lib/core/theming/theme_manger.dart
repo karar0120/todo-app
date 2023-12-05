@@ -27,6 +27,11 @@ ThemeData getAppTheme() {
         centerTitle: true,
         elevation: AppSize.s4,
       ),
+      datePickerTheme: const DatePickerThemeData(
+        headerBackgroundColor: ColorsManager.mainPurple,
+        //backgroundColor: ColorsManager.mainPurple,
+        todayBackgroundColor: MaterialStatePropertyAll(ColorsManager.gray),
+      ),
 
       // / button theme
       // buttonTheme: const ButtonThemeData(
@@ -105,7 +110,9 @@ ThemeData getAppTheme() {
       //           ),
       //           borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)))),
       // );
-
+      colorScheme: const ColorScheme.light().copyWith(
+        primary: ColorsManager.mainPurple,
+      ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: ColorsManager.mainPurple));
 }

@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/features/todo/data/database/todo_remote_database.dart';
+import 'package:todo_app/features/todo/data/database/todo_local_database.dart';
 import 'package:todo_app/features/todo/domain/usecases/list.dart';
 import 'package:todo_app/features/todo/presentation/controller/todo_delete/todo_delete_cubit.dart';
 import 'package:todo_app/features/todo/presentation/controller/todo_item/todo_item_cubit.dart';
@@ -20,8 +20,8 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // Dio & Database
   final Database db = await SqliteService.initializeDB();
-  getIt.registerLazySingleton<TodoRemoteDatabase>(
-      () => TodoRemoteDatabaseImpl(db: db));
+  getIt.registerLazySingleton<TodoLocalDatabase>(
+      () => TodoLocalDatabaseImpl(db: db));
 
   getIt.registerLazySingleton<TodoRepository>(
       () => TodoRepositoryImpl(remoteDatabase: getIt()));

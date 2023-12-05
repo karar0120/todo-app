@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_app/core/helper/spacing.dart';
 import 'package:todo_app/core/utils/strings_manger.dart';
 import 'package:todo_app/core/utils/values_manger.dart';
@@ -24,7 +25,7 @@ class TitleAndDescAndTime extends StatelessWidget {
               hintText: AppString.title,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a valid email';
+                  return AppString.pleaseEnterAValidTitle;
                 }
               },
               controller: context.read<TodoEditCubit>().titleController,
@@ -34,7 +35,7 @@ class TitleAndDescAndTime extends StatelessWidget {
               hintText: AppString.description,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter a valid email';
+                  return AppString.pleaseEnterAValidDescription;
                 }
               },
               controller: context.read<TodoEditCubit>().descriptionController,
@@ -45,15 +46,15 @@ class TitleAndDescAndTime extends StatelessWidget {
                 onTap: () {
                   BlocProvider.of<AppCalendarCubit>(context)
                       .selectDate(context)
-                      .then((value) => context
-                          .read<TodoEditCubit>()
-                          .dataTimeController
-                          .text = value!);
+                      .then((value) {
+                    context.read<TodoEditCubit>().dataTimeController.text =
+                        (DateFormat.yMMMEd().format(DateTime.parse(value!)));
+                  });
                 },
                 hintText: AppString.dateTime,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter a valid email';
+                    return AppString.pleaseEnterAValidDateTime;
                   }
                 },
                 controller: context.read<TodoEditCubit>().dataTimeController),

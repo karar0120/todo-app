@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/helper/extensions.dart';
 import 'package:todo_app/core/utils/strings_manger.dart';
 import 'package:todo_app/core/widget/cubit/app_calendar_cubit.dart';
+import 'package:todo_app/core/widget/custom_error_widget.dart';
+import 'package:todo_app/core/widget/custom_loading_indicator.dart';
+import 'package:todo_app/core/widget/toast_messages.dart';
 
 import '../../../../../../core/theming/styles.dart';
 import '../../../../../../core/utils/values_manger.dart';
@@ -20,12 +23,13 @@ class EditTaskButton extends StatelessWidget {
     return BlocBuilder<TodoEditCubit, TodoEditState>(
       builder: (context, state) {
         if (state is TodoEditError) {
-          return Text(state.error);
+          return CustomErrorWidget(errMessage: state.error);
         } else if (state is TodoEditLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const CustomLoadingIndicator();
         } else {
           if (state is TodoEditLoaded) {
             context.read<TodoItemCubit>().getTodoItem();
+            doneBotToast(title: AppString.sucessfullyEditedTask);
           }
           return Padding(
             padding: const EdgeInsets.all(AppPadding.p12),

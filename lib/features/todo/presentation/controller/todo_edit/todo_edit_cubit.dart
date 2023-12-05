@@ -27,7 +27,7 @@ class TodoEditCubit extends Cubit<TodoEditState> {
         (data) => emit(TodoEditLoaded()));
   }
 
-  void getTaskWantToEdit({required Todo todo}) {
+  void getTaskWithId({required Todo todo}) {
     titleController.text = todo.title;
     descriptionController.text = todo.description;
     dataTimeController.text = todo.dataTime;

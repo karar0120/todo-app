@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import '../../domain/entities/todo.dart';
 import '../model/todo_model.dart';
 
-abstract class TodoRemoteDatabase {
+abstract class TodoLocalDatabase {
   Future<Todo> addTodo(Todo todo);
 
   Future<Todo> editTodo(Todo todo);
@@ -12,10 +12,10 @@ abstract class TodoRemoteDatabase {
   Future<List<TodoModel>> listTodos();
 }
 
-class TodoRemoteDatabaseImpl implements TodoRemoteDatabase {
+class TodoLocalDatabaseImpl implements TodoLocalDatabase {
   final Database db;
 
-  const TodoRemoteDatabaseImpl({required this.db});
+  const TodoLocalDatabaseImpl({required this.db});
   @override
   Future<Todo> addTodo(Todo todo) async {
     await db.transaction((txn) async {

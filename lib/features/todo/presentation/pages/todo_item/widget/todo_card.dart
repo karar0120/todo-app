@@ -19,26 +19,38 @@ class TodoCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: AppPadding.p8.w, vertical: AppPadding.p14.w),
       child: Container(
-        height: AppSize.s100.h,
+        height: AppSize.s120.h,
         width: double.infinity,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15.r)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(AppSize.s15.r)),
         child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: AppPadding.p12.w, vertical: AppPadding.p16.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                todo.title,
-                style: TextStyles.font16BlueSemiBold,
+              Row(
+                children: [
+                  Text(
+                    todo.title,
+                    style: TextStyles.font16BlueSemiBold,
+                  ),
+                  const Spacer(),
+                  Text(
+                    todo.dataTime,
+                    style: TextStyles.font16BlueSemiBold,
+                  ),
+                ],
               ),
               verticalSpace(AppSize.s8),
-              Text(
-                todo.description,
-                style: TextStyles.font14DarkBlueMedium,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
+              Expanded(
+                child: Text(
+                  todo.description,
+                  style: TextStyles.font14DarkBlueMedium,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
               )
             ],
           ),
