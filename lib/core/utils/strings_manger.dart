@@ -23,7 +23,7 @@ class AppString {
   static const sucessfullyAddedTask = 'sucessfully added task';
   static const sucessfullyEditedTask = 'sucessfully edited task';
   static const sucessfullyDeletedTask = 'sucessfully deleted task';
-
+  static const String success = 'success';
   // error handler
   static const String badRequestError = "bad_request_error";
   static const String noContent = "no_content";
